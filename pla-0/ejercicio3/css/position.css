@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@import "reset.css";
+
+body {
+    height: 1500px;
+}
+
+nav#menu {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: green;
+}
+
+nav#menu p {
+    background-color: salmon;
+}
+
+#hijo2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#box {
+    background-color: grey;
+    height:400px;
+    margin-top: 17px;
+}
+
+#box div {
+    background-color: blue;
+    height: 300px;
+    margin: 0px;
+    width: 20%;
+    display: inline-block;
+}
+
+div {
+    border: 1px solid red;
+    color: white;
+}

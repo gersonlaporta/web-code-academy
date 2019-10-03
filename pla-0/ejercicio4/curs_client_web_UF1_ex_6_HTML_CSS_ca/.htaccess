@@ -1,0 +1,5 @@
+<IfModule mime_module>
+	AddDefaultCharset utf-8
+	# afegir suport perquè funcionin subtítols a IE
+	AddType text/vtt .vtt
+</IfModule>

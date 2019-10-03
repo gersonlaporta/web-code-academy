@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import "reset.css";
+
+/* Selector -> elemento:ul directamente dentro de elemento:nav*/
+
+nav > ul {
+    background-color: fuchsia;
+    margin: 10px auto;
+    width: 80%;
+    /*padding: 35px;*/
+}
+
+nav > ul > li {
+    display: inline-block;
+    background-color: springgreen;
+    width: 24.7%;
+    margin: 5px auto;
+    text-align: center;
+}
+
+nav > ul > li > ul {
+    display: none;
+}
+
+nav > ul > li:hover > ul {
+    display: block;
+}
