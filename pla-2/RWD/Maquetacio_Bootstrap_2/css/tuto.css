@@ -1,0 +1,21 @@
+body {
+    margin-top:30px;
+}
+
+[class*="col"] {
+    margin-bottom: 20px;
+    /*border:1px solid pink;*/
+}
+img {
+    width: 100%;
+}
+
+/*[class="row"] ,header {
+    border: 1px solid red
+}*/
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}

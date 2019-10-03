@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+[class*="container"] {
+    background-color: green;
+    min-height: 200px;
+    margin-bottom: 4px;
+    font-size: 40px;
+}
+
+[class*="row"] {
+    background-color: green;
+    min-height: 200px;
+    margin-bottom: 4px;
+    border: solid 1px pink;
+}
+
+[class*="col"] {
+    background-color: green;
+    height: 200px;
+    border: solid 1px pink;
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercici: PLA3_s1</title>
+    <meta name="description" content="Architecture">
+
+<!-- Bootstrap 4 -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css"></style>
+
+</head>
+
+<body>
+
+    <!-- html -->
+        
+    <div class="jumbotron">
+        <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s1.G: Arrays</h1>
+    </div>
+    <div class="container-fluid">
+            <div class="row">
+                
+        <div class="col-12">
+                    <label>Accions</label>
+                    <ol>
+                        <li>Obteniu el valor "Volvo" de la matriu de cotxes en una variable x. Mostreu el contingut de la matriu en la llista id=”llista1”, si el valor de la matriu de la llista és igual al valor de x aleshores emfatitzeu l’element de la llista amb un text en negreta</li>
+                        <li>Canvieu el primer element dels cotxes a "Ford".. Mostreu el contingut de la matriu en la llista id=”llista2”</li>
+                        <li>Mostra el nombre d'elements d'una matriu, utilitzant el mètode Array correcte. Mostreu el contingut de la matriu en la llista id=”llista3”</li>
+                        <li>Utilitzeu el mètode Array correcte per eliminar l'últim element de la matriu de fruites. Mostreu el contingut de la matriu en la llista id=”llista4”</li>
+                        <li>Utilitzeu el mètode Array correcte per afegir "Kiwi" al conjunt de fruites. Mostreu el contingut de la matriu en la llista id=”llista5”</li>
+                        <li>Utilitzeu el mètode splice () per treure "Banana" i " Orange " de les fruites. Mostreu el contingut de la matriu en la llista id=”llista6</li>
+                        <li>Utilitzeu el mètode concat () per concatenar girls i boys. Mostreu el contingut de la matriu children en la llista id=”llista7”</li>
+                        <li>Utilitzeu el mètode Array correcte per ordenar alfabèticament la matriu de children. Mostreu el contingut de la matriu children en la llista id=”llista8”</li>
+                    </ol>
+        </div>
+            <div class="col-12">
+                <form class="form" action="#">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-primary" id="executar" value="Executar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3"><i class="border-bottom">Llista 1</i>
+                <ul class="list-group list-group-flush" id="llista1"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 2</i>
+                <ul class="list-group list-group-flush" id="llista2"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 3</i>
+                <ul class="list-group list-group-flush" id="llista3"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 4</i>
+                <ul class="list-group list-group-flush" id="llista4"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 5</i>
+                <ul class="list-group list-group-flush" id="llista5"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 6</i>
+                <ul class="list-group list-group-flush" id="llista6"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 7</i>
+                <ul class="list-group list-group-flush" id="llista7"></ul>
+            </div>
+            <div class="col-3"><i class="border-bottom">Llista 8</i>
+                <ul class="list-group list-group-flush" id="llista8"></ul>
+            </div>
+        </div>
+    </div>
+
+<!-- JavaScript -->
+
+<script type="text/javascript">
+
+    // 1.
+
+    var cars1 = ["Saab", "Volvo", "BMW"]; // Array creation
+
+    var x = cars1[1];
+
+    console.log(x);
+
+    for (var i = 0; i < cars1.length; i++) {
+        // Crear un element de llista <li> dins del contenidor id='llista1'
+        if ( x == cars1[i]) {
+            // Crear un element de llista <li> dins del contenidor id='llista1'
+            document.getElementById("llista1").innerHTML += '<li><strong> Item_'+ cars1[i] +'</strong></li>';
+        } else {
+            // Crear un element de llista <li> dins del contenidor id=‛llista1‛ però emfatitzat
+                document.getElementById("llista1").innerHTML += '<li> Item_'+ cars1[i] +'</li>';
+        }
+    }
+
+    // 2.
+
+    var cars2 = ["Volvo", "Jeep", "Mercedes"]; // Array creation
+    
+    cars2[0] = "Ford"; // Change Volvo to Ford!
+
+    console.log(cars2[0]);
+
+    for (var i = 0; i < cars2.length; i++) {
+        document.getElementById("llista2").innerHTML += '<li> Item_'+ cars2[i] +'</li>';
+    }
+
+    // 3.
+
+    var cars3 = ["Volvo", "Jeep", "Mercedes"]; // Array creation
+
+    console.log(cars3.length);
+
+    for (var i = 0; i < cars3.length; i++) {
+        document.getElementById("llista3").innerHTML += '<li> Item_'+ cars3[i] +'</li>';
+    }
+
+    // 4.
+
+    var fruits4 = ["Banana", "Orange", "Apple"]; // Array creation
+
+    fruits4.splice(2);
+
+    console.log(fruits4);
+
+    for (var i = 0; i < fruits4.length; i++) {
+        document.getElementById("llista4").innerHTML += '<li> Item_'+ fruits4[i] +'</li>';
+    }
+
+    // 5.
+
+    var fruits5 = ["Banana", "Orange", "Apple"]; // Array creation
+
+    fruits5.push("Kiwi");
+
+    console.log(fruits5);
+
+    for (var i = 0; i < fruits5.length; i++) {
+        document.getElementById("llista5").innerHTML += '<li> Item_'+ fruits5[i] +'</li>';
+    }
+
+    // 6.
+
+    var fruits6 = ["Banana", "Orange", "Apple", "Kiwi"]; // Array creation
+
+    fruits6.splice(0,1);
+
+    console.log(fruits6);
+
+    for (var i = 0; i < fruits6.length; i++) {
+        document.getElementById("llista6").innerHTML += '<li> Item_'+ fruits6[i] +'</li>';
+    }
+
+    // 7.
+
+    var girls = ["Cecilie", "Lone"]; // Array creation
+    var boys = ["Emil", "Tobias", "Linus"]; // Array creation
+
+    var children = girls.concat(boys); // Array fusion
+
+    console.log(children);
+
+    for (var i = 0; i < children.length; i++) {
+        document.getElementById("llista7").innerHTML += '<li> Item_'+ children[i] +'</li>';
+    }
+
+    // 8.
+
+    children.sort();
+
+    console.log(children);
+
+    for (var i = 0; i < children.length; i++) {
+        document.getElementById("llista8").innerHTML += '<li> Item_'+ children[i] +'</li>';
+    }
+
+
+</script>
+
+</body>
+
+</html>

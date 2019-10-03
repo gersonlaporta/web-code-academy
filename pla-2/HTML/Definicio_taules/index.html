@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Definició taules</title>
+
+        <style type="text/css">
+
+            .sudoku {
+                table-layout: fixed;
+                color: black;
+                font-size: 1.8rem;
+                width: 30rem;
+                height: 30rem;
+                border-style: solid;
+                border-color: black;
+                border-width: 3px;
+                border-collapse: collapse;
+            }
+
+            .sudoku td {
+                vertical-align: middle;
+                text-align: center;
+                border-style: solid;
+                border-color: black;
+                border-width: 1px;
+            }
+
+            /* línies verticals */
+            .sudoku td:nth-child(3n+1) {
+                border-left-style: solid;
+                border-left-color: black;
+                border-left-width: 3px;
+            }
+
+            /* línies horitzontals */
+            .sudoku tr:nth-child(3n+3) {
+                border-bottom-style: solid;
+                border-bottom-color: black;
+                border-bottom-width: 3px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <h1>Pràctica.L Taules</h1>
+
+        <table class="sudoku">
+            <caption>Sudoku</caption>
+                <tbody>
+                    <tr><td></td><td>9</td><td></td><td></td><td>2</td><td></td><td></td><td>7</td><td>3</td></tr>
+                    <tr><td></td><td></td><td></td><td>4</td><td></td><td></td><td>6</td><td></td><td></td></tr>
+                    <tr><td>1</td><td>5</td><td></td><td></td><td></td><td>6</td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td>4</td><td></td><td></td><td>9</td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td>2</td><td></td><td>1</td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td>6</td><td></td><td></td><td>4</td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td>7</td><td></td><td></td><td></td><td>8</td><td>5</td></tr>
+                    <tr><td></td><td></td><td>9</td><td></td><td></td><td>8</td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td>6</td><td></td><td></td><td>5</td><td></td><td></td><td>1</td><td></td></tr>
+                </tbody>
+        </table>
+
+    </body>
+</html>

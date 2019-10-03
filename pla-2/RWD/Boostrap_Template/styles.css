@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+[class*="container"] {
+    background-color: #CCC;
+    min-height: 50px;
+    margin-bottom: 4px;
+}
+
+[class*="row"] {
+    background-color: orange;
+    min-height: 50px;
+    margin-bottom: 4px;
+}
+
+[class*="col"] {
+    background-color: green;
+    height: 30px;
+    border: solid 1px pink;
+}
+

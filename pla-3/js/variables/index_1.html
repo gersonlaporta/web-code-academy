@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Variables JavaScript</title>
+
+        <style type="text/css">
+
+        </style>
+
+    </head>
+    <body>
+
+        <div id="msgBox" class="container"></div>
+
+            <script type="text/javascript">
+
+/* VARIABLES */
+
+                // Crear una variable Integer
+                var x = 3;
+                var a = 5;
+
+                // Crear una variable Float
+                var y = 4.7;
+
+                //Crear una variable String (El número es tracta com a text)
+                var frase = "¡Hola 1er mundo!";
+                var cadena = '<select id="selSemana"></select>';
+
+                //Transferim info de variable String a variable Integer que es transformará en String
+                var x = frase;
+
+                //Crear variable Booleana
+                var condicio = true;
+
+    /* MÉTODES DE VISUALIZACIÓ
+
+                        1. Eina de debugació: console.log(x); */
+
+                // Visualitzem el contingut de la variable al navegador (Console)
+                console.log(x);
+
+                /*      2. Escriure en el DOM
+
+                            a. preparar el DOM
+                                <div id="msgBox"></div>
+                                            
+                            b. desde JS
+                                document.getElementById("msgBox").innerHTML=x; */
+
+                // Pintem la info al div
+                //document.getElementById("msgBox").innerHTML=x;
+
+    // ESTRUCTURES REPETITIVES (FOR, WHILE)
+
+                for (var i=0; i<10; i=i+1) {
+                    a++;
+                    console.log(a);
+                }
+
+    // ARRAYS
+
+                var semana = ["Lun","Mar","Mx","Jv","Vr","Sb","Dom"];
+
+                console.log(semana);
+                
+                console.log(semana[1]);
+                console.log(semana[7]);
+
+                console.log(semana.length);
+
+                //HTML
+
+                document.getElementById("msgBox").innerHTML=cadena;
+
+        //Array with for
+                
+                for (var i = 0 ; i < semana.length; i++) {
+                    console.log(semana[i]);
+                    console.log([i])
+                    debugger;
+                    document.getElementById("selSemana")+="<option>"+cadena[i]+"</option>";
+                }
+
+/* LINKS:
+developer.mozilla.org
+w3schools
+*/
+
+            </script>
+
+    </body>
+</html>

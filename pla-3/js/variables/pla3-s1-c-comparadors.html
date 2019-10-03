@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercici: PLA3_s1</title>
+    <meta name="description" content="Architecture">
+
+<!-- Bootstrap 4 -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css"></style>
+
+</head>
+
+<body>
+
+    <!-- html -->
+        
+    <div class="jumbotron">
+            <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s1.C: Comparacions</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <form class="form" action="#">
+                        <div class="form-group">
+                            <label for="n1">  Número x</label>
+                            <input class="form-control" id="nx" type="text" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="n1">  Número y</label>
+                            <input class="form-control" id="ny" type="text" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="n1">  Edat</label>
+                            <input class="form-control" id="age" type="text" value="0">
+                        </div>
+                        <div class="form-group">
+                            <input type="button" class="btn btn-primary" id="calcular" value="Calcular">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12">
+                    <label for="resultado">Resultado</label>
+                    <ol>
+                        <li>Trieu l'operador de comparació correcte per que resulti true, quan x sigui major que y: <span class="text-danger" id="comparacio1"></span>
+                        </li>
+                        <li>Trieu l'operador de comparació correcte per que resulti true, quan x sigui igual a y: <span class="text-danger" id="comparacio2"></span>
+                        </li>
+                        <li>Trieu l'operador de comparació correcte per retornar un true, quan x NO sigui igual a y: <span class="text-danger" id="comparacio3"></span>
+                        </li>
+                        <li>Trieu l'operador condicional (if/else) correcte per reportar per consola "Too Young" si l'edat és inferior a 18, altrament, mostrar "Old enough": <span class="text-danger" id="comparacio4"></span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+<!-- JavaScript -->
+
+<script type="text/javascript">
+
+    document.getElementById("calcular").onclick=function() {
+        var x = document.getElementById("nx").value;
+        var y = document.getElementById("ny").value;
+        //console.log(x > y);
+        //console.log(x == y);
+        console.log(x != y);
+    }
+
+    var age = document.getElementById("age").value;
+
+    if (age < 18) {
+        var voteable = "Too young";
+    } else {
+        var voteable = "Old enough";
+    }
+
+    console.log(voteable);
+
+</script>
+
+</body>
+
+</html>

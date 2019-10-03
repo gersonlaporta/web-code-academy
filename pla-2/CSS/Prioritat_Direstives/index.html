@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Herencia </title>
+
+        <style type="text/css">
+
+/* Estils de línia, ID (#), Classes(.), Elements | Representació */
+
+            /* 0, 1, 0, 1 = LOSER */
+            #caja h1 {
+                color: yellow;
+            }
+
+            /* 0, 1, 0, 2 = LOSER */
+            #caja header h1 {
+                color: blue;
+            }
+
+            /* 0, 1, 1, 1 = WINNER*/
+            #caja .cabecera h1 {
+                color: orange;
+            }
+
+            /* 0, 0, 0, 2 = LOSER */
+            header h1 {
+                color: purple;
+            }
+
+            /* 0, 0, 0, 1 = LOSER */
+            h1 {
+                color: red;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div id="caja">
+            <header class="cabecera">
+                <h1> Cabecera: header </h1>
+            </header>
+        </div>
+    </body>
+</html>
