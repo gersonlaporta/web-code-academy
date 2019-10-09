@@ -8,201 +8,194 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
     <title>Practica Validació formulari</title>
 </head>
-
 <body>
-
-    <div class="container">
-        <form action="servidor.php" method="post" id="registro">
-        <fieldset class="border p-2 rounded position-relative">
-            <div style="top:20px;right:10px;" class="text-danger small position-absolute">* Campo obligatorio</div>
-            <legend class="w-auto px-3 ">Registro</legend>
-            
-            <div class="form-row">
-                <div class="col-lg-4 col-md-6 mb-4 position-relative">
-                    <label for="registro_nombre">Nombre</label>
-                    <input  type="text" name="nombre" id="registro_nombre" class="form-control">
-                    <div class="invalid-feedback position-absolute">
-                        Por favor introduzca su nombre sin números.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 position-relative">
-                    <label for="registro_apellidos">Apellido</label>
-                    <input type="text" name="apellido" id="registro_apellido" class="form-control">
-                    <div class="invalid-feedback position-absolute">
-                        Por favor introduzca su apellido sin números.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 position-relative">
-                    <div class="form-row position-relative">
-                        <div class="col-5 position-static">
-                            <label for="registro_apellidos">Genero</label><br>
-                            <div class="form-check ">
-                                <input class="form-check-input" type="radio" name="genero" id="registro_genero_hombre" value="H" >
-                                <label class="form-check-label" for="registro_genero_hombre"> Hombre</label>
-                            </div>
-                            <div class="form-check position-static">
-                                <input class="form-check-input " type="radio" name="genero" id="registro_genero_mujer" value="M" >
-                                <label class="form-check-label" for="registro_genero_mujer"> Mujer</label>
-                                <div class="invalid-feedback position-absolute">
-                                    Por favor introduzca su genero.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-7 position-relative">
-                            <label >&nbsp;</label><br>
-                            <div class="form-check ">
-                                <input class="form-check-input" type="radio" name="genero" id="registro_genero_trans" value="X" >
-                                <label class="form-check-label" for="registro_genero_trans"> Transexual</label>
-                            </div>
-                            <div class="form-check ">
-                                <input class="form-check-input " type="radio" name="genero" id="registro_genero_hermafrodita" value="Y" >
-                                <label class="form-check-label" for="registro_genero_hermafrodita"> Hermafrodita</label>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4  col-md-6 mb-4 position-relative">
-                    <label for="registro_apellidos">Pais</label>
-                    <select name="country" class="form-control" id="registro_country">
-                        <option value="">--Elija una opcion --</option>
-                        <option value="es">España</option>
-                        <option value="an">Andorra</option>
-                    </select>
-                    <div class="invalid-feedback position-absolute">
-                        Por favor seleccione una opción.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 position-relative">
-                    <label for="registro_email">Email</label>
-                    <input type="text" name="email" id="registro_email" class="form-control">
-                    <div class="invalid-feedback position-absolute">
-                        Por favor introduzca su dirección de correo con un formato válido.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 position-relative">
-                    <label for="registro_password">Contraseña</label>
-                    <input type="password" name="password" id="registro_password" class="form-control">
-                    <div class="invalid-feedback position-absolute">
-                        La constraseña no tiene un formato válido.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 mb-4 position-relative">
-                    <label for="registro_language">Idiomas</label>
-                    <select name="language[]" multiple="multiple" id="registro_language" class="form-control" size="5">
-                        <option value="es">Español</option>
-                        <option value="en">Ingles</option>
-                        <option value="fr">Frances</option>
-                    </select>
-                    <div class="invalid-feedback position-absolute">
-                        Por favor seleccione una opción como mínimo.
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-12 mb-4 position-relative">
-                    <label for="registro_comentarios">Comentarios</label>
-                    <textarea name="comentarios" id="registro_comentarios" rows="5" class="form-control"></textarea>
-                    <div class="invalid-feedback position-absolute">
-                        Se requiere un comentario.
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input " name="condiciones" type="checkbox" value="1" id="registro_condiciones" >
-                    <label class="form-check-label " for="registro_condiciones">
-                        Acepto las condiciones del servicio.
-                    </label>
-                    <div class="invalid-feedback">
-                        Se requiere aceptar las condiciones del servicio.
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-primary" id="registro_enviar" type="submit">Enviar</button>
-        </fieldset>
-        </form>
-    </div>
-
+<div class="container">
+	<form action="servidor.php" method="post" id="registro">
+	  <fieldset class="border p-2 rounded position-relative">
+	  	<div style="top:20px;right:10px;" class="text-danger small position-absolute">* Campo obligatorio</div>
+		<legend class="w-auto px-3 ">Registro</legend>
+		
+		<div class="form-row">
+			<div class="col-lg-4 col-md-6 mb-4 position-relative">
+				<label for="registro_nombre">Nombre</label>
+				<input  type="text" name="nombre" id="registro_nombre" class="form-control  ">
+				<div class="invalid-feedback position-absolute">
+					Por favor introduzca su nombre sin números.
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mb-4 position-relative">
+				<label for="registro_apellidos">Apellido</label>
+				<input type="text" name="apellido" id="registro_apellido" class="form-control">
+				<div class="invalid-feedback position-absolute">
+					Por favor introduzca su apellido sin números.
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mb-4 position-relative">
+				<div class="form-row position-relative">
+					<div class="col-5 position-static">
+						<label for="registro_apellidos">Genero</label><br>
+						<div class="form-check ">
+							<input class="form-check-input" type="radio" name="genero" id="registro_genero_hombre" value="H" >
+							<label class="form-check-label" for="registro_genero_hombre"> Hombre</label>
+						</div>
+						<div class="form-check position-static">
+							<input class="form-check-input " type="radio" name="genero" id="registro_genero_mujer" value="M" >
+							<label class="form-check-label" for="registro_genero_mujer"> Mujer</label>
+							<div class="invalid-feedback position-absolute">
+					 			Por favor introduzca su genero.
+							</div>
+						</div>
+					</div>
+					<div class="col-7 position-relative">
+						<label >&nbsp;</label><br>
+						<div class="form-check ">
+							<input class="form-check-input" type="radio" name="genero" id="registro_genero_trans" value="X" >
+							<label class="form-check-label" for="registro_genero_trans"> Transexual</label>
+						</div>
+						<div class="form-check ">
+							<input class="form-check-input " type="radio" name="genero" id="registro_genero_hermafrodita" value="Y" >
+							<label class="form-check-label" for="registro_genero_hermafrodita"> Hermafrodita</label>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4  col-md-6 mb-4 position-relative">
+				<label for="registro_apellidos">Pais</label>
+				<select name="country" class="form-control" id="registro_country">
+					<option value="">--Elija una opcion --</option>
+					<option value="es">España</option>
+					<option value="an">Andorra</option>
+				</select>
+				<div class="invalid-feedback position-absolute">
+					Por favor seleccione una opción.
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mb-4 position-relative">
+				<label for="registro_email">Email</label>
+				<input type="text" name="email" id="registro_email" class="form-control">
+				<div class="invalid-feedback position-absolute">
+					Por favor introduzca su dirección de correo con un formato válido.
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mb-4 position-relative">
+				<label for="registro_password">Contraseña</label>
+				<input type="password" name="password" id="registro_password" class="form-control">
+				<div class="invalid-feedback position-absolute">
+					La constraseña no tiene un formato válido.
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-12 mb-4 position-relative">
+				<label for="registro_language">Idiomas</label>
+				<select name="language[]" multiple="multiple" id="registro_language" class="form-control" size="5">
+					<option value="es">Español</option>
+					<option value="en">Ingles</option>
+					<option value="fr">Frances</option>
+				</select>
+				<div class="invalid-feedback position-absolute">
+					Por favor seleccione una opción como mínimo.
+				</div>
+			</div>
+			<div class="col-lg-8 col-md-12 mb-4 position-relative">
+				<label for="registro_comentarios">Comentarios</label>
+				<textarea name="comentarios" id="registro_comentarios" rows="5" class="form-control"></textarea>
+				<div class="invalid-feedback position-absolute">
+					Se requiere un comentario.
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="form-check">
+				<input class="form-check-input " name="condiciones" type="checkbox" value="1" id="registro_condiciones" >
+				<label class="form-check-label " for="registro_condiciones">
+					Acepto las condiciones del servicio.
+				</label>
+				<div class="invalid-feedback">
+					Se requiere aceptar las condiciones del servicio.
+				</div>
+			</div>
+		</div>
+		 <button  class="btn btn-primary" id="registro_enviar" type="submit">Enviar</button>
+	  </fieldset>
+	</form>
+</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-    <script type="text/javascript">
-
-    document.getElementById("registro_enviar").onclick=function(evt) {
-
-        // Capturar Event i parar-lo
-        evt.preventdefault();
-
-        // var totOk control de enviament
-        var totOK=true;
-
-        // ---------- Netejar classes 'is-invalid' i 'is-valid' ----------
-        this.form.querySelectorAll("*").forEach(function(item) {
-            item.className=item.replace(/(is-valid|is-invalid)/g,'');
-        });
-
-        // ------------------ nombre ------------------
-
-        this.form.nombre.value=this.form.nombre.value.trim();
-        var string=this.form.nombre.value;
-        var pattern = /\d/;
-
-        if (pattern.test(string) || string== "") {
-            this.form.nombre.className += ' is-invalid';
-            totOk=false;
-        } else {
-            this.form.nombre.className += ' is-valid';
-        }
-
-        // ------------------ genero ------------------
-
-        if (this.form.genero.value== "") {
-            this.form.genero.forEach(function(item) {
-                item.className+=' is-invalid';
-            });
-            totOk=false;
-        } else {
-            this.form.genero.forEach(function(item) {
-                item.className+=' is-valid';
-            });
-        }
-
-        // ------------------ pais ------------------
-        if (this.form.country.value=="") {
-            this.form.country.className+=' is-invalid';
-            totOk=false;
-        } else {
-            this.form.country.className+=' is-valid';
-        }
-
-        // ------------------ idiomas ------------------
-        if (this.form.elements["language[]"].selectIndex == -1) {
-            this.form.elements["language[]"].className+=' is-invalid';
-            totOk=false;
-        } else {
-            this.form.elements["language[]"].className+=' is-valid';
-        }
-
-        // ------------------ Condiciones ------------------
-        if (! this.form.condiciones.checked) {
-            this.form.condiciones.className+=' is-invalid';
-            totOk=false;
-        } else {
-            this.form.condiciones.className+=' is-valid';
-        }
-
-        // ------------------ disparar submit ------------------
-
-        if (totOk==true) {
-            this.form.submit(); // Disparar l'event submit del form d'aquest button
-            //o be enviar les dades via AJAX
-        }
-
-    }
-
-    </script>
-    
+	<script type="text/javascript">
+	
+	document.getElementById("registro_enviar").onclick=function(evt){
+		// Capturar Event i parar-lo
+		evt.preventDefault();
+		// var totOk control de enviament
+		var totOk=true;
+		
+		// ---- Netejar classes 'is-invalid' i 'is-valid' ----
+		this.form.querySelectorAll("*").forEach(function(item){
+			item.className=item.className.replace(/(is-valid|is-invalid)/g,'');
+		});
+		
+		// ------------------------ nombre --------------------
+		this.form.nombre.value= this.form.nombre.value.trim();
+		var string= this.form.nombre.value;
+		var pattern = /\d/;
+		if( pattern.test(string) || string==""){
+			this.form.nombre.className+=' is-invalid';
+			totOk=false;
+		}else{
+			this.form.nombre.className+=' is-valid';
+		}
+		 
+		// -------------------- genero -------------------------
+		if(this.form.genero.value==''){
+			this.form.genero.forEach(function(item){
+				item.className+=' is-invalid';
+			});
+			totOk=false;
+		}else{
+			this.form.genero.forEach(function(item){
+				item.className+=' is-valid';
+			});
+		}
+		
+		// -----------------------pais --------------------------
+		if(this.form.country.value==""){
+			this.form.country.className+=' is-invalid';
+			totOk=false;
+		}else{
+			this.form.country.className+=' is-valid';
+		}
+		
+		// ----------------------- Idiomas ------------------------
+		if(this.form.elements["language[]"].selectedIndex == -1){
+			this.form.elements["language[]"].className+=' is-invalid';
+			totOk=false;
+		}else{
+			this.form.elements["language[]"].className+=' is-valid';
+		}
+		
+		 // ----------------------Condiciones ----------------------
+		 if(! this.form.condiciones.checked){
+			 this.form.condiciones.className+=' is-invalid';
+				totOk=false;
+		 }else{
+				this.form.condiciones.className+=' is-valid';
+		 } 
+		 
+		
+		if(totOk==true){
+			 this.form.submit(); // Disparar l'event submit del form d'aques button
+			 // o be enviar les dades via AJAX 
+		}
+	}
+	
+	</script>
 </body>
-
 </html>
+
+
+
+
+
