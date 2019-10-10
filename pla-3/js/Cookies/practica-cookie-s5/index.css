@@ -1,0 +1,23 @@
+#boxRGPD {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 80%;
+    background-color: #222;
+}
+
+#boxRGPD p {
+    color: #eee;
+    display: inline-block;
+    width: 80%;
+    padding: 10px;
+}
+
+#boxRGPD div#btnRGPD{
+    color: #222;
+    background-color: #eee;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+}
