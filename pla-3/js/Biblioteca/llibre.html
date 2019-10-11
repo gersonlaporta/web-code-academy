@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Practica PLA3_s5: Com programar la llei de cookies amb javascript</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+<body>
+<script type="text/javascript">
+
+var txtJSON = `
+{
+    "Title" : "The Cucko's Calling",
+    "Author": "Robert Galbraith",
+    "Genere": "classic crime novel",
+    "Detail": {
+        "Publisher" : "Little Brown",
+        "Publication_Year" : 2013,
+        "ISN-13" : 9781408704004,
+        "Language" : "English",
+        "Pages" : 494
+    },
+    "Price" : [
+        {
+            "type" : "Hardcover",
+            "price" : 16.65
+        },
+        {
+            "type" : "Kidle Edition",
+            "price" : 7.03
+        }
+    ]
+}
+`;
+
+var objBook = JSON.parse(txtJSON);
+console.log(objBook);
+
+</script>
+
+</body>
+</html>
