@@ -6,36 +6,48 @@
 <title>Practica PLA3_s5: Com programar la llei de cookies amb javascript</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+<style>
+
+#boxBook {
+    background-color: bisque;
+    height: 100px;
+    width: 300px;
+}
+
+</style>
+
 <body>
+
+    <div id="boxBook">
+        
+    </div>
+
+    <button id="btnBook">Carregar</button>
+
 <script type="text/javascript">
 
-var txtJSON = `
-{
-    "Title" : "The Cucko's Calling",
-    "Author": "Robert Galbraith",
-    "Genere": "classic crime novel",
-    "Detail": {
-        "Publisher" : "Little Brown",
-        "Publication_Year" : 2013,
-        "ISN-13" : 9781408704004,
-        "Language" : "English",
-        "Pages" : 494
-    },
-    "Price" : [
-        {
-            "type" : "Hardcover",
-            "price" : 16.65
-        },
-        {
-            "type" : "Kidle Edition",
-            "price" : 7.03
+    var xhr;
+    document.getElementById("btnBook").onclick = function() {
+        //Crear instancia de l'objecte XMLHttpRequest sobre la variable xhr
+        if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+            http_request = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { // IE
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
         }
-    ]
-}
-`;
-
-var objBook = JSON.parse(txtJSON);
-console.log(objBook);
+        //Definir la funció de callBack()
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //tot va bé, s'ha rebut la resposta
+                var objBook=JSON.parse(xhr.responseText);
+            } else if (xhr.readyState == 4 && xhr.status == 404) {
+                alert ('Ho sentim el servidor sembla que no es troba disponible');
+            }
+        };
+        //Definir els parametres de sol·licituds HTTP
+        xhr.open('GET','http://http://localhost/web-code-academy/pla-3/json/book.json',true);
+        //Iniciem la sol·licitud
+        xhr.send(null);
+    }
 
 </script>
 
