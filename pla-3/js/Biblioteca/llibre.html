@@ -18,19 +18,17 @@
 
 <body>
 
-    <div id="boxBook">
-        
-    </div>
-
+    <div id="boxBook"></div>
     <button id="btnBook">Carregar</button>
 
 <script type="text/javascript">
 
     var xhr;
+
     document.getElementById("btnBook").onclick = function() {
         //Crear instancia de l'objecte XMLHttpRequest sobre la variable xhr
         if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-            http_request = new XMLHttpRequest();
+            xhr = new XMLHttpRequest();
         } else if (window.ActiveXObject) { // IE
             xhr = new ActiveXObject("Microsoft.XMLHTTP");
         }
@@ -44,7 +42,7 @@
             }
         };
         //Definir els parametres de sol·licituds HTTP
-        xhr.open('GET','http://http://localhost/web-code-academy/pla-3/json/book.json',true);
+        xhr.open('GET','http://localhost/web-code-academy/pla-3/json/book.json',true);
         //Iniciem la sol·licitud
         xhr.send(null);
     }
