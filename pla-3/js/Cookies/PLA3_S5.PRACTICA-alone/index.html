@@ -86,11 +86,34 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit officia consequatur fuga, nesciunt optio. Magnam distinctio quo dolor fugiat minima consequatur temporibus, enim, assumenda facere dolores at minus harum omnis.</p>
     </div>
     
-    <div id="boxRGPD"><p>Hacemos uso de cookies propias y de terceros para proporcionar una mejor experiencia de usuario. Al seguir navegando entendemos que acepta nuestra <a href="#">Política de Cookies</a>.</p><div id="btnRGPD">Aceptar</div></div>
+    <!-- <div id="boxRGPD"><p>Hacemos uso de cookies propias y de terceros para proporcionar una mejor experiencia de usuario. Al seguir navegando entendemos que acepta nuestra <a href="#">Política de Cookies</a>.</p><div id="btnRGPD">Aceptar</div></div> -->
+
+    <div class="m-4 alert alert-dark position-fixed fixed-bottom" id="boxRGPD"><p>Hacemos uso de cookies propias y de terceros para proporcionar una mejor experiencia de usuario. Al seguir navegando entendemos que acepta nuestra <a href="#">Política de Cookies</a>.</p>
+    <div class="btn btn-primary" id="btnRGPD">Aceptar</div></div>
+
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript"></script>
+  <script src="cookies.js"></script>
+
+  <script type="text/javascript">
+  
+    var bloqueRGPD = document.getElementById("boxRGPD");
+
+      if(detectCookie("rgpdOK")){
+        if (getCookie("rgpdOK")==1){
+          document.getElementById("boxRGPD").parentNode.removeChild(document.getElementById("boxRGPD"));
+        }
+      } else {
+        document.getElementById("btnRGPD").onclick=function(){
+          setCookie("rgpdOK",1,365);
+
+          document.getElementById("boxRGPD").parentNode.removeChild(document.getElementById("boxRGPD"));
+        }
+      }
+  
+  </script>
+
   </body>
   </html>
