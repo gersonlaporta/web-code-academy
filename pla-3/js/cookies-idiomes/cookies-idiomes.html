@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Exercici: PLA3_s5.A: Cookies  + Selector Idioma</title>
+<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
+</head>
+<body>
+
+  <div class="jumbotron">
+    <h1><i class="fa fa-clipboard"></i> Exercici: PLA3_s5.A: Cookies  + Selector Idioma</h1>
+  </div>
+
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+        <div class="jumbotron">
+          <h2 id="wellcomeBox"></h2>
+        </div>
+        </div>
+      </div>
+      <form>
+      <div class="row">
+        <div class="col-12">
+        <div class="form-row">
+          <div class="col-4">
+            <label for="selLanguages">Language</label>
+
+            <select id="selLanguages" class="form-control">
+              <option value="">-- Select a Language --</option>
+            </select>
+            
+          </div>
+        </div>
+        </div>
+      </div>
+      </form>
+  </div>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/cookies.js"></script>
+  <script type="text/javascript">
+
+// 1. 
+
+      var txtJSONTranslator='{"en":{"wellcome":"Wellcome to the site"}, "es":{"wellcome":"Bienvenido al sitio"}, "fr":{"wellcome":"Bienvenu au Site"}}';
+      
+      var objTranslator = JSON.parse(txtJSONTranslator);
+
+      var txtJSONLanguage='[{"name":"English","value":"en"},{"name":"Spanish","value":"es"},{"name":"French","value":"fr"}]';
+
+      var objLanguage = JSON.parse(txtJSONLanguage);
+
+      for (x in objLanguage) {
+            var cadena = '<option value="' + objLanguage[x].value+'">'+
+              objLanguage[x].name+'</option>';
+              document.getElementById('selLanguages').innerHTML+=cadena;
+      }
+
+      var cookieLang = getCookie('lang');
+
+      if (cookieLang) {
+            document.getElementById('wellcomeBox').innerHTML=objTranslator[cookieLang].wellcome;
+            document.getElementById('selLanguages').value=cookieLang;
+      } else {
+            document.getElementById('wellcomeBox').innerHTML="";
+            document.getElementById('selLanguages').value="";
+      }
+
+      document.getElementById('selLanguages').onchange = function() {
+        if (this.value!="") {
+                  createCookie ("lang",this.value,3,"/","");
+                  location.reload();
+        }
+      }
+
+  </script>
+</body>
+</html>

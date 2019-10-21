@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Exercici PLA3_s5.D: Creació de document JSON amb un llistat de cotxes.</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  >
+</head>
+<body>
+  <div class="jumbotron">
+    <h1>
+      <i class="fa fa-clipboard"></i> Exercici PLA3_s5.D: Creació de document JSON amb un llistat de cotxes.
+    </h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row" style="min-height:600px;">
+        <div  id="modelBox" class="col-md-4">
+        <h3>Marca</h3>
+        <select class="form-control">
+          <option value="">-- Escull una marca --</option>
+        </select>
+        </div>
+        <div id="carsBox" class="col-md-8">
+        <h3>Cotxes</h3>
+        <table class="table">
+          <thead><tr></tr></thead>
+          <tbody></tbody>
+        </table>
+        </div>
+    </div>
+  </div>
+  
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+    var txtJSON = 
+        `{
+        "picotxes": {
+          "cotxe": [
+            {
+              "marca": "Renault",
+              "model": "Clio",
+              "any": "2014-01-28",
+              "cilindrada": "2000",
+              "color": "Negre"
+            },
+            {
+              "marca": "Alfa Romeo",
+              "model": "165",
+              "any": "2014-01-28",
+              "cilindrada": "2000",
+              "color": "Verd"
+            },
+            {
+              "marca": "Seat",
+              "model": "Ibiza",
+              "any": "2014-01-28",
+              "cilindrada": "1900",
+              "color": "Groc"
+            },
+            {
+              "marca": "Renault",
+              "model": "Megane",
+              "any": "2014-01-28",
+              "cilindrada": "2000",
+              "color": "Gris"
+            },
+            {
+              "marca": "Citroën",
+              "model": "Picasso",
+              "any": "2014-01-28",
+              "cilindrada": "2000",
+              "color": "Gris"
+            },
+            {
+              "marca": "Audi",
+              "model": "Q1",
+              "any": "2014-01-28",
+              "cilindrada": "2500",
+              "color": "Vermell"
+            }
+          ]
+        }
+      }`
+
+      /**
+       * Elimina duplicados de un Array 
+       */
+      function removeDuplicates(arr) {
+          var seen = {};
+          var ret_arr = [];
+          for (var i = 0; i < arr.length; i++) {
+              if (!(arr[i] in seen)) {
+                  ret_arr.push(arr[i]);
+                  seen[arr[i]] = true;
+              }
+          }
+          return ret_arr;
+      
+      }
+      
+      // Convertir JSON a objecte
+      var objPicotxes= JSON.parse(txtJSON); 
+
+      var objArryModels=[];
+      
+      // ------- Recorre cada un del models de cotxes -------
+      for(x in objPicotxes.picotxes.cotxe) {
+        // Afegir cada marca de l'obejcte objPicotxes a un Array
+        objArryModels.push(objPicotxes.picotxes.cotxe[x].marca);
+        if(x==0) {
+            for(key in objPicotxes.picotxes.cotxe[x]) {
+            document.querySelector("#carsBox table thead>tr").innerHTML+="<th style=\"width:18%\" >"+key+"</th>";
+            }
+        }
+        var cadena="<tr>";
+        for(key in objPicotxes.picotxes.cotxe[x]) {
+          cadena+="<td>"+objPicotxes.picotxes.cotxe[x][key]+"</td>";
+        }
+        cadena+="</tr>";
+        document.querySelector("#carsBox table tbody").innerHTML+=cadena
+      }
+
+      // Eliminar duplicats mitjançant una funció
+      objArryModels=removeDuplicates(objArryModels);
+      
+      // Publicar el select de marques
+      for(y in objArryModels){
+        var option =new Option(objArryModels[y],objArryModels[y]);
+        document.querySelector("#modelBox select").appendChild(option);
+      }
+      
+      // ------- Event onchange de la llista de marques de cotxe -------
+      document.querySelector("#modelBox select").onchange=function() {
+        document.querySelector("#carsBox table tbody").innerHTML="";
+        if(this.value=="") {
+          for(x in objPicotxes.picotxes.cotxe){
+          var cadena="<tr>";
+              for(key in objPicotxes.picotxes.cotxe[x]) {
+                cadena+="<td>"+objPicotxes.picotxes.cotxe[x][key]+"</td>";
+              }
+              cadena+="</tr>";
+              document.querySelector("#carsBox table tbody").innerHTML+=cadena;
+          }
+        } else {
+          for(x in objPicotxes.picotxes.cotxe){
+            if(objPicotxes.picotxes.cotxe[x].marca==this.value ) {
+              var cadena="<tr>";
+                    for(key in objPicotxes.picotxes.cotxe[x]) {
+                      cadena+="<td>"+objPicotxes.picotxes.cotxe[x][key]+"</td>";
+                    }
+                    cadena+="</tr>";
+                    document.querySelector("#carsBox table tbody").innerHTML+=cadena;
+            }
+          }
+        }
+      }
+
+  </script>
+  </body>
+  </html>

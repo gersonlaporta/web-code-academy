@@ -1,0 +1,7 @@
+<!ELEMENT picotxes (cotxe*)>
+<!ELEMENT cotxe (marca,model,any,cilindrada,color)>
+<!ELEMENT marca (#PCDATA)>
+<!ELEMENT model (#PCDATA)>
+<!ELEMENT any (#PCDATA)>
+<!ELEMENT cilindrada (#PCDATA)>
+<!ELEMENT color (#PCDATA)>
