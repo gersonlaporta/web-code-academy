@@ -38,10 +38,11 @@
     var xhr;
 
     if (window.XMLHttpRequest) {
-    // code for modern browsers var xhr = new XMLHttpRequest();
+      // code for modern browsers var xhr = new XMLHttpRequest();
+      var xhr = new XMLHttpRequest();
     } else {
-    // code for old IE browsers
-    var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      // code for old IE browsers
+      var xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
     xhr.onreadystatechange = function() {
@@ -75,16 +76,35 @@
             }
           }
         }
+        xhr.open("GET", "tbl_cursos.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send();
+      }
+
+      document.getElementById('tblAreas').onchange = function() {
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var arrCursos = JSON.parse(this.responseText);
+            document.getElementById('tblcursos').innerHTML='';
+            for ( i in arrCursos) {
+              var cadena = '<tr>'+
+                '<td>' + arrCursos[i].id + '</td>' +
+                '<td>' + arrCursos[i].nombre + '</td>' +
+                '<td>' + arrCursos[i].area + '</td>' +
+                '<td>' + arrCursos[i].duracion + '</td>' +
+                '<td><a href="javacript:void(0)" onclick="getCurs('+arrCursos[i].id+')">[+info...]</a></td>'+
+                '</tr>';
+                document.getElementById('tblcursos').innerHTML += cadena;
+            }
+          }
+        }
         xhr.open("GET", "tbl_cursos.php?id_areas="+this.value+"&nocache="+Math.random(), true);
         xhr.send();
-    }
+      }
 
-    function getCurs(id) {
-      console.log(id_curso);
-    }
-
-
-
+      function getCrus(id) {
+        console.log(id_curso);
+      }
 
 
 
