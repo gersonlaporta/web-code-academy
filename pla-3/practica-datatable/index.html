@@ -55,6 +55,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- ========================== div#modalAjax ======================= -->
 <div id="ajaxModal" class="modal" data-backdrop="static" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
@@ -113,7 +114,7 @@ var tabla=$('#tblCursos').DataTable({
 	
 });
 $('#ajaxModal').modal('show');
-/* ----------------------------------- GEt Areas --------------------------- */
+/* ----------------------------------- Get Areas --------------------------- */
 var xhr1;
 xhr1 = new XMLHttpRequest();
 xhr1.onreadystatechange=function(){
@@ -130,7 +131,7 @@ xhr1.onreadystatechange=function(){
 xhr1.open('GET','http://app.cifo.local/api/public/formacion/areas/',true);
 xhr1.send();
 
-/* ------------------------------------- get Cursos ----------------------------- */
+/* ------------------------------------- Get Cursos ----------------------------- */
 var xhr;
 xhr = new XMLHttpRequest();
 
