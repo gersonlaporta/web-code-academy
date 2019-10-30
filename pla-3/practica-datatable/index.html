@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practica Datatables</title>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+	<!-- Datatable CSS -->
+	<!-- <link rel="stylesheet"  href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/> -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
+
+	<!-- Font Awsome -->
+	<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container-fluid">
+	<div class="jumbotron "><h1 class="text-center strong">Gestión de Cursos</h1></div>
+	<div class="row">
+		<div class="col-12 col-md-3">
+			<div class="card h-100">
+				<div class="card-header">
+					Areas
+				</div>
+				<div class="card-body">
+					<select class="form-control" id="tblAreas">
+						<option value="">-- Elija una opcion --</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-9">
+			<div class="card h-100">
+				<div class="card-header">
+					Cursos
+				</div>
+				<div class="card-body">
+				<div class="table-responsive">
+					<table id="tblCursos" class=" table small">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Curso</th>
+								<th>Area</th>
+								<th>Duracion</th>
+								<th>[ <i class="fa fa-plus"></i> info]</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ========================== div#modalAjax ======================= -->
+<div id="ajaxModal" class="modal" data-backdrop="static" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+		<div class="spinner-border text-light">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+</div>
+
+<!-- =========================== div#cursoModal ===================== -->
+<!-- Modal -->
+<div class="modal fade" id="cursoModal" tabindex="-1" role="dialog" aria-labelledby="cursoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cursoModalLabel">Ficha de Curso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"  ></script>
+<!-- Bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<!-- Datatable -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
+<script>
+var tabla=$('#tblCursos').DataTable({
+	language: {
+		url: "/PracticaDatatable/spanish.datatable.json"
+	},
+	lengthMenu 	: [ 5, 10, 25, 50, 75, 100 ],
+	pageLength  : 5,
+	columnDefs 	: [
+	    { "data": "id"		, "targets": 0 },
+	    { "data": "nombre"	, "targets": 1 },
+	    { "data": "area"	, "targets": 2 },
+	    { "data": "duracion", "targets": 3 },
+	    { "data": "info"	, "targets": 4 }
+	]
+	
+});
+$('#ajaxModal').modal('show');
+/* ----------------------------------- GEt Areas --------------------------- */
+var xhr1;
+xhr1 = new XMLHttpRequest();
+xhr1.onreadystatechange=function(){
+	if(xhr1.readyState==4 && xhr1.status==200){
+		var objResponse1=JSON.parse(xhr1.responseText);
+		if(objResponse1.status){
+			for(var j=0;j<objResponse1.records.length; j++ ){
+				var cadena='<option value="'+objResponse1.records[j].id+'">'+objResponse1.records[j].nombre+'</option>';
+				document.getElementById('tblAreas').innerHTML+=cadena;
+			}
+		}
+	}
+}
+xhr1.open('GET','http://app.cifo.local/api/public/formacion/areas/',true);
+xhr1.send();
+
+/* ------------------------------------- get Cursos ----------------------------- */
+var xhr;
+xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange=function(){
+	if(xhr.readyState==4 && xhr.status==200){
+		var objResponse=JSON.parse(xhr.responseText);
+		if(objResponse.status){
+			for(var i=0; i< objResponse.records.length; i++){
+				tabla.row.add({
+					"id" 		: objResponse.records[i].id,
+					"nombre"	: objResponse.records[i].nombre,
+					"area"		: objResponse.records[i].area,
+					"duracion"	: objResponse.records[i].duracion,
+					"info"		: '<a href="javascript:void(0)" onclick="viewCurso('+objResponse.records[i].id+')">[<i class="fa fa-plus"></i> info]</a>'
+				});
+			}
+			tabla.draw();
+			$('#ajaxModal').modal('hide');
+		}
+	}
+}
+xhr.open('GET','http://app.cifo.local/api/public/formacion/cursos/',true);
+xhr.send();
+
+/* ------------------- tblAreas onchange ---------------------- */
+document.getElementById('tblAreas').onchange=function(){
+	$('#ajaxModal').modal('show');
+	tabla.clear().draw();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var objResponse=JSON.parse(xhr.responseText);
+			if(objResponse.status){
+				for(var i=0; i< objResponse.records.length; i++){
+					console.log(objResponse.records[i]);
+					tabla.row.add({
+						"id" 		: objResponse.records[i].id,
+						"nombre"	: objResponse.records[i].nombre,
+						"area"		: objResponse.records[i].area,
+						"duracion"	: objResponse.records[i].duracion,
+						"info"		: '<a href="javascript:void(0)" onclick="editCurso('+objResponse.records[i].id+')">[<i class="fa fa-plus"></i> info]</a>'
+					});
+				}
+				tabla.draw();
+				$('#ajaxModal').modal('hide');
+			}
+		}
+	}
+	if(this.value==''){
+		xhr.open('GET','http://app.cifo.local/api/public/formacion/cursos/',true);
+		
+	}else{
+		xhr.open('GET','http://app.cifo.local/api/public/formacion/cursos/area/'+this.value+'/',true);
+	}
+	xhr.send();
+}
+
+function viewCurso(id){
+	document.querySelector('#cursoModal .modal-body ').innerHTML='';
+	$('#ajaxModal').modal('show');
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var objResponse=JSON.parse(xhr.responseText);
+			if(objResponse.status){
+				for(key in objResponse.record){
+					console.log(key);
+					var cadena= `<p>${key}: ${objResponse.record[key]}</p>`;
+					document.querySelector('#cursoModal .modal-body ').innerHTML+=cadena;
+				}
+				$('#ajaxModal').modal('hide');
+				$('#cursoModal').modal('show');
+			}
+		}
+	}
+	xhr.open('GET','http://app.cifo.local/api/public/formacion/cursos/'+id+'/',true);
+	xhr.send();
+}
+
+
+</script>
+</body>
+</html>
