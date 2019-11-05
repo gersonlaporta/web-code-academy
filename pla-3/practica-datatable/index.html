@@ -15,9 +15,11 @@
 	<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
 <div class="container-fluid">
 	<div class="jumbotron "><h1 class="text-center strong">Gestión de Cursos</h1></div>
 	<div class="row">
+
 		<div class="col-12 col-md-3">
 			<div class="card h-100">
 				<div class="card-header">
@@ -97,6 +99,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
+
+
+
 <script>
 var tabla=$('#tblCursos').DataTable({
 	language: {
@@ -105,18 +110,21 @@ var tabla=$('#tblCursos').DataTable({
 	lengthMenu 	: [ 5, 10, 25, 50, 75, 100 ],
 	pageLength  : 5,
 	columnDefs 	: [
-	    { "data": "id"		, "targets": 0 },
-	    { "data": "nombre"	, "targets": 1 },
-	    { "data": "area"	, "targets": 2 },
-	    { "data": "duracion", "targets": 3 },
-	    { "data": "info"	, "targets": 4 }
+		{ "data": "id"		, "targets": 0 },
+		{ "data": "nombre"	, "targets": 1 },
+		{ "data": "area"	, "targets": 2 },
+		{ "data": "duracion", "targets": 3 },
+		{ "data": "info"	, "targets": 4 }
 	]
 	
 });
 $('#ajaxModal').modal('show');
+
 /* ----------------------------------- Get Areas --------------------------- */
+
 var xhr1;
 xhr1 = new XMLHttpRequest();
+
 xhr1.onreadystatechange=function(){
 	if(xhr1.readyState==4 && xhr1.status==200){
 		var objResponse1=JSON.parse(xhr1.responseText);
